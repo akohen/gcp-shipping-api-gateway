@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "babel-watch src/index.js",
+    "dev": "nodemon src/ --exec \"node --require dotenv/config --require babel-register\"",
     "start": "node dist/index.js",
     "build": "npx babel src -d dist",
     "test": "npx jest"
@@ -14,7 +14,8 @@
   "dependencies": {
     "apollo-server": "^2.0.0-beta.8",
     "graphql": "^0.13.2",
-    "graphql-tag": "^2.9.2"
+    "graphql-tag": "^2.9.2",
+    "node-fetch": "^2.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -24,16 +25,24 @@
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "babel-watch": "^2.0.7",
+    "dotenv": "^6.0.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.12.0",
     "graphql-tools": "^3.0.2",
-    "jest": "^22.4.4"
+    "jest": "^22.4.4",
+    "nodemon": "^1.18.3"
   },
   "babel": {
     "presets": [
-      "env"
+      [
+        "env",
+        {
+          "targets": {
+            "node": "8"
+          }
+        }
+      ]
     ],
     "plugins": [
       "transform-object-rest-spread"

@@ -2,11 +2,12 @@ import { ApolloServer } from 'apollo-server';
 import resolvers from './resolvers';
 import typeDefs from './schema';
 import { orders } from './data';
+import quoteService from './quoteService';
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: { orders },
+  context: { orders, quoteService },
 });
 
 const port = process.env.PORT || 8080;

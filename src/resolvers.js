@@ -3,7 +3,10 @@ const resolvers = {
     getAllOrders: (_, args, ctx) => ctx.orders,
     getOrderStatus: (_, { id }, ctx) =>
       ctx.orders.find(order => order.id === id),
-    getQuote: (_, args) => ({ ...args, price: 10 }),
+    getQuote: async (_, args, ctx) => {
+      const price = await ctx.quoteService.getQuote(args);
+      return { ...args, price };
+    },
   },
 
   Mutation: {
@@ -11,6 +14,7 @@ const resolvers = {
       const newOrder = {
         ...args,
         id: ctx.orders.length,
+        price: args.payment,
       };
       ctx.orders.push(newOrder);
       return newOrder;

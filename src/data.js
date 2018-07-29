@@ -1,6 +1,6 @@
 const orders = [
   {
-    id: '1',
+    id: '0',
     from: 'earth',
     to: 'mars',
     weight: '10',
@@ -8,4 +8,8 @@ const orders = [
   },
 ];
 
-export { orders };
+const quoteService = {
+  getQuote: () => 10,
+};
+
+export { orders, quoteService };

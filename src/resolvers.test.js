@@ -24,8 +24,8 @@ describe('Orders', () => {
 
   it('Should return a quote', async () => { // Test by executing the graphql schema
     const query = '{getQuote(from:"earth", to:"venus", weight:10) { price }}';
-    const { data: { getQuote } } = await graphql(schema, query, {}, context);
-    expect(getQuote.price).toBe(10);
+    const { data } = await graphql(schema, query, {}, context);
+    expect(data.getQuote.price).toBe(10);
   });
 
   it('should create a new order', async () => {
