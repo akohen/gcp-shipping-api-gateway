@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 
 const quoteService = {
   getQuote: ({ from, to, weight }) =>
-    fetch(`${process.env.PRICING_SERVICE}/quote/${from}-${to}-${weight}`, { timeout: 1500 })
+    fetch(`${process.env.PRICING_SERVICE}/quote/${from}-${to}-${weight}`, { timeout: 1500, redirect: 'manual', follow: 0 })
       .then(response => response.json())
       .then(json => json.price),
 };
