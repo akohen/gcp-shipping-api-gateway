@@ -10,6 +10,7 @@ const quoteService = {
     });
     try {
       const res = await client.request({ url: `${process.env.PRICING_SERVICE}/quote/${from}-${to}-${weight}` });
+      console.info('v2');
       return res.data.price;
     } catch (err) {
       console.error(err.message);
