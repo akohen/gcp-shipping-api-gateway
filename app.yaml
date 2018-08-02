@@ -1,8 +1,5 @@
 runtime: nodejs8
 
-
-automatic_scaling:
-  min_instances: 0
-
 env_variables:
   PRICING_SERVICE: "http://gcp-shipping-pricing.appspot.com"
+  PRICING_SERVICE_CLIENT_ID: "753811324095-54khn92j9cnpr5jgqgitn6g69c3tj7u0.apps.googleusercontent.com"
